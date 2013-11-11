@@ -56,7 +56,7 @@ def saveNetwork(G, R, graphName="g1"):
 # latent ranks
 R = {}
 for v in V:
-	R[v] = np.random.pareto(0.9)
+	R[v] = np.random.uniform(0, 1)
 
 
 

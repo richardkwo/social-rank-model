@@ -1,7 +1,7 @@
 library(network)
 
-edgelist.df <- read.table("data/g41-edgelist.txt")
-nodelist.df <- read.table("data/g41-nodelist.txt", col.names=c("node","R"))
+edgelist.df <- read.table("data/gunif-edgelist.txt")
+nodelist.df <- read.table("data/gunif-nodelist.txt", col.names=c("node","R"))
 N <- max(nodelist.df$node)
 
 G <- network(edgelist.df, directed=F, loops=T, matrix.type="edgelist")
