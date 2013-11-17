@@ -60,4 +60,19 @@ gradient.wrapped <- function(pars, A) {
     return (c(grad.R.vec, grad.H.vec))
 }
 
+edge.link.prob.mat <- function(R, H) {
+    N <- length(R)
+    A <- diag(rep(0, N))
+    for (i in 1:N) {
+        for (j in 1:N) {
+            if (j==i) next
+            A[i,j] = 1/(1+exp(-(R[j] - R[i] - H[i])))
+        }
+    }
+    return (A)
+}
 
+expected.number.of.edges <- function(R, H) {
+    prob.mat <- edge.link.prob.mat(R, H)
+    return (sum(rowSums(prob.mat)))
+}
