@@ -1,3 +1,6 @@
+library(compiler)
+enableJIT(1)
+
 library(optimx)
 
 R.estimate <- rnorm(N, 0, 3)
