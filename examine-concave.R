@@ -6,7 +6,7 @@ ll.single.var.replace <- function(x, i, R, G, Beta) {
     return (log.likelihood(G, R2, Beta))
 }
 
-i <- 3
+i <- 1
 r <- seq(0, 1, length.out=100)
 r.mle <- nodelist.df$R[i]
 y <- sapply(r, function(x) ll.single.var.replace(x, i, nodelist.df$R, G, Beta))

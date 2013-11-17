@@ -2,7 +2,7 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
-N = 50
+N = 100
 print "Hello"
 
 # nodes
@@ -56,8 +56,11 @@ def saveNetwork(G, R, graphName="g1"):
 # latent ranks
 R = {}
 for v in V:
-	R[v] = np.random.uniform(0, 1)
-
+	# R[v] = np.random.uniform(-1, 1)
+	R[v] = np.random.pareto(1)
+R_mean = np.mean(R.values())
+for v in V:
+	R[v] = R[v] - R_mean
 
 
 # network
@@ -88,6 +91,3 @@ nx.draw_networkx_nodes(G, pos=pos, node_color=nodeColors, alpha=1.0, node_size=8
 nx.draw_networkx_edges(G, pos=pos, alpha=0.8)
 nx.draw_networkx_labels(G, pos=posForLabel, labels=nodeLabels, alpha=0.8)
 plt.show()
-
-
-
