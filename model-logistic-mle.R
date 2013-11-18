@@ -8,9 +8,19 @@ H.estimate <- rnorm(N, 0, 1)
 
 pars.estimate <- c(R.estimate, H.estimate)
 
+Err.Plot <- function(original.vec, estimate.vec) {
+    i.vec <- 1:length(original.vec)
+    reorder.vec <- order(original.vec)
+    draw.df <- data.frame(orig=original.vec[reorder.vec], est=estimate.vec[reorder.vec], index=i.vec)
+    fig <- ggplot(draw.df) + geom_point(aes(x=index, y=orig, color="true")) + 
+        geom_point(aes(x=index, y=est, color="estimate")) + 
+        geom_linerange(aes(x=index, ymin=orig, ymax=est), linetype="longdash")
+    print(fig)
+}
+
 mle.optim.results <- optimx(par=pars.estimate, fn=log.likelihood.logistic.wrapped, 
                             gr=gradient.wrapped, 
-                            hess=NULL, method=c("CG"), itnmax=100, 
+                            hess=NULL, method=c("CG"), itnmax=1000, 
                             control = list(trace=1, save.failures=TRUE, maximize=TRUE, REPORT=1), 
                             A=A)
 
