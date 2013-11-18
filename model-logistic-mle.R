@@ -15,7 +15,7 @@ Err.Plot <- function(original.vec, estimate.vec) {
     fig <- ggplot(draw.df) + geom_point(aes(x=index, y=orig, color="true")) + 
         geom_point(aes(x=index, y=est, color="estimate")) + 
         geom_linerange(aes(x=index, ymin=orig, ymax=est), linetype="longdash")
-    print(fig)
+    return(fig)
 }
 
 mle.optim.results <- optimx(par=pars.estimate, fn=log.likelihood.logistic.wrapped, 
