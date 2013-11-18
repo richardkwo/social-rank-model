@@ -1,16 +1,36 @@
 library(network)
-
-# edgelist.df <- read.table("data/football/football-edgelist.txt")
-# nodelist.df <- read.table("data/football/football-nodelist.txt", header=T)
-# N <- max(nodelist.df$node)
-# G <- network(edgelist.df, directed=F, loops=T, matrix.type="edgelist")
 # 
+# 
+# ## ==== celegans neural 
+# edgelist.df <- read.table("data/celegansneural/celegansneural-directed-edgelist.txt")
+# nodelist.df <- read.table("data/celegansneural/celegansneural-directed-nodelist.txt", header=T)
+# network.name <- "Celegans-neural"
+# N <- max(nodelist.df$node)
+# G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
+# A <- as.sociomatrix(G)
+# indegree.vec <- apply(A, 2, sum)
+# outdegree.vec <- apply(A, 1, sum)
 # print(G)
+# print(paste("Network loaded:", network.name))
+# ## ====
+# 
+# ## ==== football
+# edgelist.df <- read.table("data/football/football-edgelist.txt")
+# nodelist.df <- read.table("data/football//football-nodelist.txt", header=T)
+# network.name <- "Football"
+# N <- max(nodelist.df$node)
+# G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
+# A <- as.sociomatrix(G)
+# indegree.vec <- apply(A, 2, sum)
+# outdegree.vec <- apply(A, 1, sum)
+# print(G)
+# print(paste("Network loaded:", network.name))
+# ## ====
 
-## ==== celegans neural 
-edgelist.df <- read.table("data/celegansneural/celegansneural-directed-edgelist.txt")
-nodelist.df <- read.table("data/celegansneural/celegansneural-directed-nodelist.txt", header=T)
-network.name <- "Celegans-neural"
+## ==== logisitc simu 1 (50 nodes)
+edgelist.df <- read.table("data/logistic-simu/simu1-edgelist.txt")
+nodelist.df <- read.table("data/logistic-simu/simu1-nodelist.txt", header=T)
+network.name <- "logistic-simu-1"
 N <- max(nodelist.df$node)
 G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
 A <- as.sociomatrix(G)
@@ -19,7 +39,5 @@ outdegree.vec <- apply(A, 1, sum)
 print(G)
 print(paste("Network loaded:", network.name))
 ## ====
-
-
 
 
