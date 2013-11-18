@@ -1,8 +1,8 @@
 library(network)
 
 N.simu <- 100
-R.simu <- rgamma(N.simu, shape=0.5, rate=2)
-H.simu <- rnorm(N.simu, mean=4, sd=4)
+R.simu <- rnorm(N.simu, mean=1, sd=5)
+H.simu <- rnorm(N.simu, mean=7, sd=4)
 
 node.simu.df <- data.frame(node=1:N.simu, R=R.simu, H=H.simu)
 edge.1 <- NULL
