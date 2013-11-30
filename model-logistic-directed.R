@@ -1,4 +1,7 @@
 library(network)
+# the model only relies on 
+# R, H, A, regularization.coeff
+
 
 log.likelihood.outlink.for.node <- function(i, R, H, A) {
     out.links <- (A[i,]==1)

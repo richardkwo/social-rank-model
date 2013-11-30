@@ -11,3 +11,15 @@ err.plot <- function(true.vec, estimate.vec) {
     print(fig)
     print(paste("rmse=",rmse), quote=FALSE)
 }
+
+### degree distribution from one column of edgelist
+get.degree.frequencies <- function(nodecol) {
+    degree.seq <- as.numeric(table(nodecol))
+    degree.seq <- degree.seq[order(degree.seq)]
+    degree.seq.tab <- table(degree.seq)
+    degree.vec <- as.numeric(names(degree.seq.tab))
+    freq.vec <- as.numeric(degree.seq.tab)
+    freq.vec <- freq.vec / sum(freq.vec)
+    result.df <- data.frame(degree=degree.vec, freq=freq.vec)
+    return (result.df)
+} 
