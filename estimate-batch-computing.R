@@ -1,7 +1,10 @@
+library(doMC)
 library(foreach)
 library(compiler)
 enableJIT(1)
 library(optimx)
+
+registerDoMC()
 
 # load real data before laoding edge removal configuration
 source("loadRealData.R")
@@ -56,6 +59,7 @@ removedEdgesDir = "data/celegansneural/edge-removal/"
 batch.profile <- read.table(paste(removedEdgesDir, "batch-profile.txt", sep=""), header=TRUE, 
                             stringsAsFactors=F)
 batches <- batch.profile$batches
+batches <- c("b1")
 
 
 foreach(t=1:length(batches), .combine="c", .packages="optimx") %dopar% 
