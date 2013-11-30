@@ -1,5 +1,8 @@
 # History files
 .Rhistory
 
+# mac
+.DS_Store
+
 # Example code in package build process
 *-Ex.R
