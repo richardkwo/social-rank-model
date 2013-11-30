@@ -1,6 +1,6 @@
 library(network)
 
-N.simu <- 100
+N.simu <- 500
 R.simu <- rnorm(N.simu, mean=1, sd=5)
 H.simu <- rnorm(N.simu, mean=7, sd=4)
 

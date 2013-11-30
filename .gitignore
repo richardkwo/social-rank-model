@@ -1,6 +1,9 @@
 # History files
 .Rhistory
 
+# temp data
+.RData
+
 # mac
 .DS_Store
 

@@ -12,7 +12,7 @@ log.likelihood.outlink.for.node <- function(i, R, H, A) {
     return(sum(log.part1) + sum(log.part2))
 }
 
-log.likelihood.logistic <- function(R, H, A) {
+log.likelihood.logistic <- function(R, H, A, regularization.coeff=0.01) {
     N <- nrow(A)
     node.vec <- 1:N
     ll <- 0
@@ -25,38 +25,39 @@ log.likelihood.logistic <- function(R, H, A) {
         log.part2 <- log(1 - 1/(1 + exp(-(R[out.nonlinks] - R[i] - H[i]))))
         ll <- ll + sum(log.part1) + sum(log.part2)
     }
+    ll <- ll - regularization.coeff * (sum(R^2) + sum(H^2))
     return (ll)
 }
 
-log.likelihood.logistic.wrapped <- function(pars, A) {
+log.likelihood.logistic.wrapped <- function(pars, A, regularization.coeff=0.01) {
     N <- nrow(A)
     R <- pars[1:N]
     H <- pars[(N+1):(2*N)]
-    return (log.likelihood.logistic(R, H, A))
+    return (log.likelihood.logistic(R, H, A, regularization.coeff))
 }
 
-gradient.Ri <- function(i, R, H, A) {
+gradient.Ri <- function(i, R, H, A, regularization.coeff) {
     N <- nrow(A)
     node.vec <- 1:N
     return (sum(A[,i] - A[i,] + 1/(1+exp(-(R[node.vec] - R[i] - H[i]))) - 
-                1/(1+exp(-(R[i] - R[node.vec] - H[node.vec])))))
+                1/(1+exp(-(R[i] - R[node.vec] - H[node.vec])))) - 2 * regularization.coeff * R[i])
 }
 
-gradient.Hi <- function(i, R, H, A) {
+gradient.Hi <- function(i, R, H, A, regularization.coeff) {
     N <- nrow(A)
     node.vec <- 1:N
     result.vec <- -A[i,] + 1/(1+exp(-(R[node.vec] - R[i] - H[i])))
     # remove i-i in the vector
-    return (sum(result.vec[-i])) 
+    return (sum(result.vec[-i]) - 2 * regularization.coeff * H[i]) 
 }
 
-gradient.wrapped <- function(pars, A) {
+gradient.wrapped <- function(pars, A, regularization.coeff=0.01) {
     N <- nrow(A)
     node.vec <- 1:N
     R <- pars[1:N]
     H <- pars[(N+1):(2*N)]
-    grad.R.vec <- sapply(node.vec, function(x) gradient.Ri(x, R, H, A))
-    grad.H.vec <- sapply(node.vec, function(x) gradient.Hi(x, R, H, A))
+    grad.R.vec <- sapply(node.vec, function(x) gradient.Ri(x, R, H, A, regularization.coeff))
+    grad.H.vec <- sapply(node.vec, function(x) gradient.Hi(x, R, H, A, regularization.coeff))
     return (c(grad.R.vec, grad.H.vec))
 }
 
