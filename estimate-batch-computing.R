@@ -1,3 +1,8 @@
+library(foreach)
+library(compiler)
+enableJIT(1)
+library(optimx)
+
 # load real data before laoding edge removal configuration
 source("loadRealData.R")
 
@@ -53,5 +58,5 @@ batch.profile <- read.table(paste(removedEdgesDir, "batch-profile.txt", sep=""),
 batches <- batch.profile$batches
 
 
-foreach(t=1:length(batches), .combine="c") %dopar% 
+foreach(t=1:length(batches), .combine="c", .packages="optimx") %dopar% 
     do.estimation(A, N, removedEdgesDir, batches[t], itermax=2000)
