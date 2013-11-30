@@ -41,22 +41,9 @@ library(network)
 # ## ====
 
 ## ==== logisitc simu 2 (500 nodes)
-edgelist.df <- read.table("data/logistic-simu/simu2-edgelist.txt")
-nodelist.df <- read.table("data/logistic-simu/simu2-nodelist.txt", header=T)
-network.name <- "logistic-simu-2"
-N <- max(nodelist.df$node)
-G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
-A <- as.sociomatrix(G)
-indegree.vec <- apply(A, 2, sum)
-outdegree.vec <- apply(A, 1, sum)
-print(G)
-print(paste("Network loaded:", network.name))
-## ====
-
-# # ==== pol blogs
-# edgelist.df <- read.table("data/polblogs/polblogs-edgelist.txt")
-# nodelist.df <- read.table("data/polblogs/polblogs-nodelist.txt", header=T)
-# network.name <- "polblogs"
+# edgelist.df <- read.table("data/logistic-simu/simu2-edgelist.txt")
+# nodelist.df <- read.table("data/logistic-simu/simu2-nodelist.txt", header=T)
+# network.name <- "logistic-simu-2"
 # N <- max(nodelist.df$node)
 # G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
 # A <- as.sociomatrix(G)
@@ -64,5 +51,18 @@ print(paste("Network loaded:", network.name))
 # outdegree.vec <- apply(A, 1, sum)
 # print(G)
 # print(paste("Network loaded:", network.name))
+## ====
+
+# # ==== pol blogs
+edgelist.df <- read.table("data/polblogs/polblogs-edgelist.txt")
+nodelist.df <- read.table("data/polblogs/polblogs-nodelist.txt", header=T)
+network.name <- "polblogs"
+N <- max(nodelist.df$node)
+G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
+A <- as.sociomatrix(G)
+indegree.vec <- apply(A, 2, sum)
+outdegree.vec <- apply(A, 1, sum)
+print(G)
+print(paste("Network loaded:", network.name))
 # # ====
 
