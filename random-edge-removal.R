@@ -2,8 +2,9 @@
 source("loadRealData.R")
 M <- nrow(edgelist.df)
 
-removedEdgesDir = "data/celegansneural/edge-removal/"
-removal.fractions <- c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)
+# removedEdgesDir = "data/celegansneural/edge-removal/"
+removedEdgesDir = "data/polblogs/edge-removal/"
+removal.fractions <- c(0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95)
 removal.numbers <- as.integer(M * removal.fractions)
 total.batches <- length(removal.fractions)
 batches <- sapply(1:total.batches, function(x) paste("b",x,sep=""))
