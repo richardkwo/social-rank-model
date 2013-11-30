@@ -59,7 +59,7 @@ removedEdgesDir = "data/celegansneural/edge-removal/"
 batch.profile <- read.table(paste(removedEdgesDir, "batch-profile.txt", sep=""), header=TRUE, 
                             stringsAsFactors=F)
 batches <- batch.profile$batches
-batches <- c("b1")
+
 
 
 foreach(t=1:length(batches), .combine="c", .packages="optimx") %dopar% 
