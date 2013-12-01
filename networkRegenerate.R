@@ -1,3 +1,4 @@
+# depends on "get.degree.frequencies" in "myutilities.R"
 library(ggplot2)
 
 N <- length(R.estimate)
@@ -30,14 +31,14 @@ outdegree.regen.df <- get.degree.frequencies(regen.edgelist$V1)
 fig1 <- ggplot(indegree.real.df) + 
     geom_line(aes(x=degree, y=freq, colour="Real"), data=indegree.real.df) + geom_point(aes(x=degree, y=freq, colour="Real"), data=indegree.real.df) + 
     geom_line(aes(x=degree, y=freq, colour="Generated"), data=indegree.regen.df) + geom_point(aes(x=degree, y=freq, colour="Generated"), data=indegree.regen.df) + 
-    scale_y_log10() + scale_x_log10() + xlab("in-degree") + ylab("frequency") + 
+    scale_y_log10() + scale_x_log10() + xlab("In-degree") + ylab("Frequency") + 
     theme(legend.title=element_blank())
 print(fig1) 
 
 fig2 <- ggplot(indegree.real.df) + 
     geom_line(aes(x=degree, y=freq, colour="Real"), data=outdegree.real.df) + geom_point(aes(x=degree, y=freq, colour="Real"), data=outdegree.real.df) + 
     geom_line(aes(x=degree, y=freq, colour="Generated"), data=outdegree.regen.df) + geom_point(aes(x=degree, y=freq, colour="Generated"), data=outdegree.regen.df) + 
-    scale_y_log10() + scale_x_log10() + xlab("out-degree") + ylab("frequency") + 
+    scale_y_log10() + scale_x_log10() + xlab("Out-degree") + ylab("Frequency") + 
     theme(legend.title=element_blank())
 print(fig2) 
 

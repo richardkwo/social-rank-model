@@ -1,8 +1,8 @@
 import networkx as nx
 import numpy as np
 
-realNetworkFileName = "data/" + "celegansneural/celegansneural-directed-edgelist.txt"
-regeneratedFileName = "RegeneratedData/" + "Celegans-neural-edgelist-regenerated.txt"
+realNetworkFileName = "data/twitter/twitter-sample-500.txt"
+regeneratedFileName = "RegeneratedData/twitter-sample-500-edgelist-regenerated.txt"
 
 def getInDegreeSeq(G):
 	indegreeSeq = sorted([G.in_degree(u) for u in G.nodes()], reverse=True)
