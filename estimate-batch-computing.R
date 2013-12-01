@@ -56,7 +56,7 @@ do.estimation <- function(A, N, removedEdgesDir, this.batch, itermax=2000) {
 }
 
 # removedEdgesDir = "data/celegansneural/edge-removal/"
-removedEdgesDir = "data/polblogs/edge-removal/"
+removedEdgesDir = "data/twitter/edge-removal/"
 batch.profile <- read.table(paste(removedEdgesDir, "batch-profile.txt", sep=""), header=TRUE, 
                             stringsAsFactors=F)
 batches <- batch.profile$batches
