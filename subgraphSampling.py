@@ -12,7 +12,7 @@ def getNeighborhood(G, u):
 	return list(nodeSet)
 
 if __name__=="__main__":
-	nodeSeedSet = random.sample(G.nodes(), 1)
+	nodeSeedSet = random.sample(G.nodes(), 2)
 	nodeSampleSet = nodeSeedSet
 	nodeSampleSet = set(nodeSampleSet)
 
