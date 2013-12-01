@@ -1,10 +1,11 @@
 library(network)
 # 
 # 
-# # ==== twitter subgraph sampled with 1 seed node and 2-level BFS
-edgelist.df <- read.table("data/twitter/twitter-sample-500.txt")
-nodelist.df <- read.table("data/twitter/twitter-sample-500-nodelist.txt", header=T)
-network.name <- "twitter-sample-500"
+
+# # ==== twitter subgraph sampled with 2 seed node and 2-level BFS
+edgelist.df <- read.table("data/twitter/twitter-sample-450-edgelist.txt")
+nodelist.df <- read.table("data/twitter/twitter-sample-450-nodelist.txt", header=T)
+network.name <- "twitter-sample-450"
 N <- max(nodelist.df$node)
 G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
 A <- as.sociomatrix(G)
@@ -12,6 +13,19 @@ indegree.vec <- apply(A, 2, sum)
 outdegree.vec <- apply(A, 1, sum)
 print(G)
 print(paste("Network loaded:", network.name))
+# # ====
+
+# # ==== twitter subgraph sampled with 1 seed node and 2-level BFS
+# edgelist.df <- read.table("data/twitter/twitter-sample-500.txt")
+# nodelist.df <- read.table("data/twitter/twitter-sample-500-nodelist.txt", header=T)
+# network.name <- "twitter-sample-500"
+# N <- max(nodelist.df$node)
+# G <- network(edgelist.df, directed=TRUE, loops=FALSE, matrix.type="edgelist")
+# A <- as.sociomatrix(G)
+# indegree.vec <- apply(A, 2, sum)
+# outdegree.vec <- apply(A, 1, sum)
+# print(G)
+# print(paste("Network loaded:", network.name))
 # # ====
 
 # ## ==== celegans neural 
