@@ -2,9 +2,11 @@ import numpy as np
 import networkx as nx
 import random 
 
-workingDir = "data/celegansneural/edge-removal/"
+# workingDir = "data/celegansneural/edge-removal/"
+workingDir = "data/polblogs/edge-removal/"
 batchProfileFileName = workingDir + "batch-profile.txt"
-networkFileName = "data/celegansneural/celegansneural-directed-edgelist.txt"
+# networkFileName = "data/celegansneural/celegansneural-directed-edgelist.txt"
+networkFileName = "data/polblogs/polblogs-edgelist.txt"
 aucResultFileName = workingDir + "auc-result.txt"
 
 def sampleWithReplacement(population, k):
@@ -70,7 +72,7 @@ def aucForBatch(thisBatch, G):
 
 
 	# sample a portion of removed edges
-	removedEdgesSampled = random.sample(removedEdges, min(len(removedEdges), 1000))
+	removedEdgesSampled = random.sample(removedEdges, min(len(removedEdges), 5000))
 	# removedEdgesSampled = sampleWithReplacement(removedEdges, 1000)
 
 	# test on each edge
@@ -98,10 +100,11 @@ def aucForBatch(thisBatch, G):
 	for ePos in removedEdgesSampled:
 		i = ePos[0]
 		j = ePos[1]
+		if i==j: continue
 		# sample an non-existing edge u -> v
 		while (True):
-			u = random.sample(range(1, N+1), 1)[0]
-			v = random.sample(range(1, N+1), 1)[0]
+			u = random.sample(G.nodes(), 1)[0]
+			v = random.sample(G.nodes(), 1)[0]
 			if v==u: continue
 			if (v not in G[u]): break
 		# i -> j is the real link (real positive)

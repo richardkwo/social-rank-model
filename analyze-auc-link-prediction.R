@@ -1,7 +1,8 @@
 library(ggplot2)
 library(reshape)
 
-auc.result.filename = "data/celegansneural/edge-removal/auc-result.txt"
+# auc.result.filename = "data/celegansneural/edge-removal/auc-result.txt"
+auc.result.filename = "data/polblogs/edge-removal/auc-result.txt"
 auc.result.df <- read.table(auc.result.filename, header=TRUE, stringsAsFactors=FALSE)
 auc.result.df$fraction.observed.edges = 1 - auc.result.df$fraction.removed.edges
 

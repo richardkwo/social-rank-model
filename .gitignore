@@ -9,3 +9,6 @@
 
 # Example code in package build process
 *-Ex.R
+
+# large data
+data/twitter/twitter_combined.txt

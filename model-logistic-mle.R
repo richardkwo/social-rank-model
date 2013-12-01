@@ -31,6 +31,6 @@ pars.estimate <- c(R.estimate, H.estimate)
 # save.image(paste("rdata/", imagefile.name, sep=""))
 
 print(paste("Optim over with ll=", log.likelihood.logistic(R.estimate, H.estimate, A, regularization.coeff)))
-#print(paste("Image saved to", imagefile.name))
+# print(paste("Image saved to", imagefile.name))
 
 
