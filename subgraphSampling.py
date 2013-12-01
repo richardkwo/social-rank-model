@@ -5,9 +5,9 @@ def getNeighborhood(G, u):
 	'''return the node set up to 2 levels for u '''
 	nodeSet = set()
 	nodeSet.add(u)
-	for v in G[u]:
+	for v in (set(G.predecessors(u)) | set(G.successors(u))):
 		nodeSet.add(v)
-		for j in G[v]:
+		for j in (set(G.predecessors(v)) | set(G.successors(v))):
 			nodeSet.add(j)
 	return list(nodeSet)
 
@@ -20,6 +20,7 @@ if __name__=="__main__":
 		# add u's neighborhood to the set
 		nodeSampleSet = nodeSampleSet | set(getNeighborhood(G, u))
 
+	nodeSampleSet = list(nodeSampleSet)
 	print len(nodeSampleSet), "nodes added."
 
 

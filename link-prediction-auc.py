@@ -2,11 +2,12 @@ import numpy as np
 import networkx as nx
 import random 
 
-# workingDir = "data/celegansneural/edge-removal/"
-workingDir = "data/polblogs/edge-removal/"
+# workingDir = "data/polblogs/edge-removal/"
+workingDir = "data/twitter/edge-removal/"
+
 batchProfileFileName = workingDir + "batch-profile.txt"
 # networkFileName = "data/celegansneural/celegansneural-directed-edgelist.txt"
-networkFileName = "data/polblogs/polblogs-edgelist.txt"
+networkFileName = "data/twitter/twitter-sample-500.txt"
 aucResultFileName = workingDir + "auc-result.txt"
 
 def sampleWithReplacement(population, k):
